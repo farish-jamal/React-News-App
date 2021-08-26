@@ -8,7 +8,7 @@ export default class Nav extends Component {
           <div className="container-fluid">
              <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/BBC_Select_logo.jpg" alt="This is logo" style={{width: "40px"}}/>
             <a className="navbar-brand mx-4" href="/">
-              BBC CHINDI
+              NEWS CHINDI
             </a>
             <button
               className="navbar-toggler"

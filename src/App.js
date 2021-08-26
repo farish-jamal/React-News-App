@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import Nav from './components/Nav'
-import News from './components/News'
+import React, { Component } from "react";
+import Nav from "./components/Nav";
+import News from "./components/News";
 
 export default class App extends Component {
   render() {
@@ -9,6 +9,6 @@ export default class App extends Component {
         <Nav />
         <News />
       </div>
-    )
+    );
   }
 }
