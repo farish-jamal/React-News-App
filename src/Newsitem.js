@@ -7,7 +7,7 @@ export default class Newsitem extends Component {
       <div>
         <div
           className="card mx-4 my-4"
-          style={{ width: "20rem", cursor: "pointer", height: "62vh" }}
+          style={{ width: "31rem", cursor: "pointer",boxShadow:"4px 4px 6px #2222"}}
         >
           <img
             src={imgUrl}
