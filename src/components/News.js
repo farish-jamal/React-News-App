@@ -99,6 +99,9 @@ export default class News extends Component {
                     : "https://www.borderbank.com.au/wp-content/uploads/2016/11/Web_NoticeTile.jpg"
                 }
                 newsUrl={element.url}
+                author={element.author?element.author: "Unknown"}
+                date={element.publishedAt?element.publishedAt: "Unknown"}
+                source={element.source.name}
               />
             );
           })}
