@@ -16,7 +16,7 @@ const News = (props)=> {
     
   const updateNews = async () => {
     props.setProgress(10)
-    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}/${props.page + 1}/${props.pageSize}.json`
+    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}.json`
     setLoading({ loading: true });
     let data = await fetch(url);
     props.setProgress(40)
@@ -30,9 +30,10 @@ const News = (props)=> {
   }
 
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(props.category)} - News Chindi`
+    // document.title = `${capitalizeFirstLetter(props.category)} - News Chindi`;
    updateNews()
-  })
+   // eslint-disable-next-line
+  },[])
 
 
   const fetchMoreData = async () => {
