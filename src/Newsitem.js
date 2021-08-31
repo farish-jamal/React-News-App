@@ -10,9 +10,12 @@ export default class Newsitem extends Component {
           className="card mx-4 my-4"
           style={{ width: "31rem", cursor: "pointer", boxShadow: "4px 4px 6px #2222" }}
         >
-          <span className="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left:"90%", zIndex:"1"}}>
+          <div style={{display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0'}}>
+          <span className=" badge rounded-pill bg-danger">
               {source}
             </span>
+
+          </div>
           <img
             src={imgUrl}
             className="card-img-top"

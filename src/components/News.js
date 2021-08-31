@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
-  //https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${this.props.category}&apiKey=44be3fd01e074d3dacbc1f86b2c6b510
 
   static defaultProps = {
     country: "in",
@@ -35,29 +34,24 @@ export default class News extends Component {
     )} - News Chindi`;
   }
   async updateNews() {
+    this.props.setProgress(10)
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=44be3fd01e074d3dacbc1f86b2c6b510&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(40)
     let parsedData = await data.json();
+    this.props.setProgress(70)
     console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100)
   }
   async componentDidMount() {
     this.updateNews();
   }
-  // handlePreviousClick = async () => {
-  //   this.setState({ page: this.state.page - 1 });
-  //   this.updateNews();
-  // };
-  // handleNextClick = async () => {
-  //   this.setState({ page: this.state.page + 1 });
-  //   console.log(this.state.page);
-  //   this.updateNews();
-  // };
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
     console.log(this.state.page);
@@ -74,7 +68,7 @@ export default class News extends Component {
   render() {
     return (
       <div className="container my-3 text-center">
-        <h1 className="text-center">
+        <h1 className="text-center" style={{marginTop: "70px"}}>
           NEWS CHINDI - Top {this.capitalizeFirstLetter(this.props.category)}{" "}
           Headlines
         </h1>
