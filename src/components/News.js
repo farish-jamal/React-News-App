@@ -16,7 +16,7 @@ const News = (props)=> {
     
   const updateNews = async () => {
     props.setProgress(10)
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=44be3fd01e074d3dacbc1f86b2c6b510&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}/${props.page + 1}/${props.pageSize}.json`
     setLoading({ loading: true });
     let data = await fetch(url);
     props.setProgress(40)
@@ -30,15 +30,13 @@ const News = (props)=> {
   }
 
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(
-      props.category
-    )} - News Chindi`;
+    document.title = `${capitalizeFirstLetter(props.category)} - News Chindi`
    updateNews()
-  },[])
+  })
 
 
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=b77b5b893e4f310c76409c18dca32582&page=${page + 1}&pageSize=${props.pageSize}`;
+    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}.json`
     setPage(page+1)
     let data = await fetch(url);
     let parsedData = await data.json();
