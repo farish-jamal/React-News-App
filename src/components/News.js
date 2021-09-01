@@ -3,13 +3,15 @@ import Newsitem from "../Newsitem";
 import "./News.css";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 const News = (props)=> {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
+  // const [page, setPage] = useState(1)
+  // eslint-disable-next-line
   const [totalResults, setTotalResults] = useState(0)
+
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -22,7 +24,7 @@ const News = (props)=> {
     props.setProgress(40)
     let parsedData = await data.json();
     props.setProgress(70)
-    console.log(parsedData);
+    // console.log(parsedData);
     setArticles(parsedData.articles);
     setTotalResults(parsedData.totalResults);
     setLoading(false);
@@ -36,15 +38,15 @@ const News = (props)=> {
   },[])
 
 
-  const fetchMoreData = async () => {
-    const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}.json`
-    setPage(page+1)
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    console.log(parsedData);
-    setArticles(articles.concat(parsedData.articles))
-    setTotalResults(parsedData.totalResults)
-  };
+  // const fetchMoreData = async () => {
+  //   const url = `https://saurav.tech/NewsAPI/top-headlines/category/${props.category}/${props.country}.json`
+  //   setPage(page+1)
+  //   let data = await fetch(url);
+  //   let parsedData = await data.json();
+  //   console.log(parsedData);
+  //   setArticles(articles.concat(parsedData.articles))
+  //   setTotalResults(parsedData.totalResults)
+  // };
     return (
       <div className="container my-3 text-center">
         <h1 className="text-center" style={{marginTop: "70px"}}>
@@ -52,12 +54,12 @@ const News = (props)=> {
           Headlines
         </h1>
         {loading && <Spinner />}
-        <InfiniteScroll
+        {/* <InfiniteScroll
           dataLength={articles.length}
-          next={fetchMoreData}
+          // next={fetchMoreData}
           hasMore={articles.length !== totalResults}
           loader={<Spinner />}
-        >
+        > */}
           <div className="news__items">
             {articles.map((element) => {
               return (
@@ -86,7 +88,7 @@ const News = (props)=> {
               );
             })}
           </div>
-        </InfiniteScroll>
+        {/* </InfiniteScroll> */}
       </div>
     );
 
