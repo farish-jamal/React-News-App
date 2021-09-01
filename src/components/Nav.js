@@ -13,7 +13,7 @@ const Nav = () => {
             style={{ width: "40px" }}
           />
           <Link className="navbar-brand mx-4" to="/">
-            NEWS CHINDI
+            NEWS AAJTAK
           </Link>
           <button
             className="navbar-toggler"
